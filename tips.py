@@ -89,6 +89,8 @@ st.write("""
 
 sc = sns.FacetGrid(tips, col="time")
 sc.map_dataframe(sns.histplot, 'tip')
+sc.set_xlabels('Чаевые')
+sc.set_ylabels('Размер ($)')
 st.pyplot(sc)
 
 st.write("""
@@ -100,4 +102,7 @@ st.write("""
 
 sc = sns.FacetGrid(tips, col="sex", hue="smoker")
 sc.map_dataframe(sns.scatterplot, x="total_bill", y="tip")
+sc.set_xlabels('Сумма счёта ($)')
+sc.set_ylabels('Чаевые ($)')
+sc.add_legend()
 st.pyplot(sc)
