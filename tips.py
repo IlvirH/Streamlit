@@ -8,7 +8,7 @@ import matplotlib.pyplot as plt
 path = 'https://raw.githubusercontent.com/mwaskom/seaborn-data/master/tips.csv'
 
 tips = pd.read_csv(path)
-tips.drop(columns=['Unnamed: 0'], inplace=True)
+# tips.drop(columns=['Unnamed: 0'], inplace=True)
 
 st.write("""
 ### Данный график показывает *размер дневной выручки ресторана* 
