@@ -19,55 +19,68 @@ st.title("""
 # st.write("""
 # **размер дневной выручки ресторана** 
 # """)
-fig, ax = plt.subplots()
+fig, ax = plt.subplots(figsize=(10,8))
 sns.histplot(data=tips, x='total_bill')
 ax.set_xlabel('Доход')
-ax.set_ylabel('Количество в тыс. руб.')
+ax.set_ylabel('Количество (в $)')
 ax.set_title('размер дневной выручки ресторана')
 ax.grid(axis='y')
 st.pyplot(fig)
 
 
 
-st.write("""
+# st.write("""
 
-Визуализация суммы заказа и размер оставленных чаевых от каждого столика
+# Визуализация суммы заказа и размер оставленных чаевых от каждого столика
 
-""")
+# """)
 
 fig, ax = plt.subplots(figsize=(10,8))
 sns.scatterplot(data=tips, x='total_bill', y='tip', size='size', sizes=list(np.arange(10,61,10)))
-ax.set_title('Визуализация суммы заказа и размер чаевых \
-             в зависимости от количества человек ')
-ax.set_xlabel('Доход')
+ax.set_title('Визуализация суммы заказа и размер чаевых в зависимости от количества человек ')
+ax.set_xlabel('Доход ($)')
 ax.set_ylabel('Количество в тыс. руб.')
 ax.legend(markerfirst=False, fontsize='x-small')
 st.pyplot(fig)
 
 
-st.write("""
-Общая сумма заказов по дням недели рабочего графика кафе
-""")
+# st.write("""
+# Общая сумма заказов по дням недели рабочего графика кафе
+# """)
 
-fig, ax = plt.subplots()
-sns.barplot(data=tips, x='day', y='total_bill', estimator=np.sum)   
+fig, ax = plt.subplots(figsize=(10,8))
+sns.barplot(data=tips, x='day', y='total_bill', estimator=np.sum)
+ax.set_xlabel('Дни недели')
+ax.set_ylabel('Доход ($)')
+ax.set_title('Общая сумма заказов по дням недели рабочего графика кафе')
+ax.grid(axis='y') 
 st.pyplot(fig)
 
 
-st.write("""
-Размер чаевых по дням недели работы заведения, оставленных посетителями разделенных по полу.
-""")
+# st.write("""
+# Размер чаевых по дням недели работы заведения, оставленных посетителями разделенных по полу
+# """)
 
-fig, ax = plt.subplots()
+fig, ax = plt.subplots(figsize=(10,8))
 sns.scatterplot(data=tips, x='tip', y='day', hue='sex', size= 'sex', sizes=[50,100])
+ax.set_xlabel('Размер чаевых ($)')
+ax.set_ylabel('День недели')
+ax.set_title('Размер чаевых по дням недели работы заведения, оставленных посетителями разделенных по полу')
+ax.legend(markerfirst=False, fontsize='x-small')
+ax.grid(axis='x')
 st.pyplot(fig)
 
-st.write("""
-Ящик с усами отобращающий сумму всех счетов за обед и ланч по дням недели рабочего графика кафе 
-""")
+# st.write("""
+# Ящик с усами отобращающий сумму всех счетов за обед и ланч по дням недели рабочего графика кафе 
+# """)
 
-fig, ax = plt.subplots()
+fig, ax = plt.subplots(figsize=(10,8))
 sns.boxplot(data=tips, x="total_bill", y="day", hue='time')
+ax.set_xlabel('Доход ($)')
+ax.set_ylabel('День недели')
+ax.set_title('Общая сумма заказов по дням недели рабочего графика кафе')
+ax.legend(markerfirst=False, fontsize='x-small')
+ax.grid(axis='x')
 st.pyplot(fig)
 
 st.write("""
