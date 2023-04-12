@@ -21,7 +21,7 @@ st.title("""
 # """)
 
 
-fig, ax = plt.subplots()
+fig, ax = plt.subplots(figsize=(10,8))
 sns.histplot(data=tips, x='total_bill')
 ax.set_xlabel('Стоимость заказа (счета) ($)')
 ax.set_ylabel('Количество заказов (счётов)')
@@ -37,11 +37,10 @@ st.pyplot(fig)
 
 
 fig, ax = plt.subplots(figsize=(10,8))
-sns.scatterplot(data=tips, x='total_bill', y='tip', size='size', sizes=list(np.arange(10,61,10)))
-ax.set_title('Отображение значений размера чаевых к сумме счёта \nв зависимости от количества человек в счёте (количество отображено разностью величины меток)')
+sns.scatterplot(data=tips, x='total_bill', y='tip')
+ax.set_title('Отношение размера чаевых к сумме счёта')
 ax.set_xlabel('Стоимость счета ($)')
 ax.set_ylabel('Размер чаевых ($)')
-ax.legend(markerfirst=False, fontsize='x-small')
 st.pyplot(fig)
 
 
@@ -53,8 +52,8 @@ st.pyplot(fig)
 fig, ax = plt.subplots(figsize=(10,8))
 sns.barplot(data=tips, x='day', y='total_bill', estimator=np.sum)
 ax.set_xlabel('Дни недели')
-ax.set_ylabel('Доход ($)')
-ax.set_title('Общая сумма заказов по дням недели рабочего графика кафе')
+ax.set_ylabel('Сумма ($)')
+ax.set_title('Общая сумма счётов за день')
 ax.grid(axis='y') 
 st.pyplot(fig)
 
@@ -68,7 +67,7 @@ fig, ax = plt.subplots(figsize=(10,8))
 sns.scatterplot(data=tips, x='tip', y='day', hue='sex', size= 'sex', sizes=[50,100])
 ax.set_xlabel('Размер чаевых ($)')
 ax.set_ylabel('День недели')
-ax.set_title('Размер чаевых за день ')
+ax.set_title('Распределение чаевых по дням оплаченные мужчинами и женщинами')
 ax.legend(markerfirst=False, fontsize='x-small')
 ax.grid(axis='x')
 st.pyplot(fig)
