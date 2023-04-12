@@ -5,7 +5,7 @@ import seaborn as sns
 import matplotlib as mpl
 import matplotlib.pyplot as plt
 
-path = '/home/one/DS/datasets/tips.csv'
+path = 'https://github.com/IlvirH/Streamlit/blob/main/tips.csv'
 
 tips = pd.read_csv(path)
 tips.drop(columns=['Unnamed: 0'], inplace=True)
