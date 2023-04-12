@@ -25,7 +25,7 @@ fig, ax = plt.subplots(figsize=(10,8))
 sns.histplot(data=tips, x='total_bill')
 ax.set_xlabel('Стоимость заказа (счета) ($)')
 ax.set_ylabel('Количество заказов (счётов)')
-ax.set_title('Количество заказов определенного диапазона стоимости')
+ax.set_title('Количество заказов определенного диапазона их стоимости')
 ax.grid(axis='y')
 st.pyplot(fig)
 
@@ -74,15 +74,15 @@ st.pyplot(fig)
 
 
 # st.write("""
-# Ящик с усами отобращающий сумму всех счетов за обед и ланч по дням недели рабочего графика кафе 
+# Визуализация распределения счётов
 # """)
 
 
 fig, ax = plt.subplots(figsize=(10,8))
 sns.boxplot(data=tips, x="total_bill", y="day", hue='time')
-ax.set_xlabel('Доход ($)')
+ax.set_xlabel('Стоимость ($)')
 ax.set_ylabel('День недели')
-ax.set_title('Общая сумма заказов по дням недели рабочего графика кафе')
+ax.set_title('Распределение счётов по стоимости за день')
 ax.legend(markerfirst=False, fontsize='x-small')
 ax.grid(axis='x')
 st.pyplot(fig)
@@ -94,15 +94,15 @@ st.write("""
 
 sc = sns.FacetGrid(tips, col="time")
 sc.map_dataframe(sns.histplot, 'tip')
-sc.set_xlabels('Чаевые')
-sc.set_ylabels('Размер ($)')
+sc.set_xlabels('Размер ($)')
+sc.set_ylabels('Количество чаевых')
 st.pyplot(sc)
 
 
 st.write("""
-Диаграммы рассеивания показывающие связь размера счета и чаевых 
+Диаграммы рассеяния показывающие связь размера счета и чаевых 
 среди мужщин и женщин, разделенных также на курящих и не курящих.
-Слева для показаны статистика для женщин, справа для мужщин
+Слева график со статистикой для женщин, справа для мужщин
 """)
 
 
