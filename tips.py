@@ -13,23 +13,32 @@ tips = pd.read_csv(path)
 st.title("""
                       
 **В данном проекте отображены дневные доходы и размер чаевых для разных категорий посетителей кафе 'PlutO'** 
+
 """)
 
-st.write("""
-**размер дневной выручки ресторана** 
-""")
-
+# st.write("""
+# **размер дневной выручки ресторана** 
+# """)
 fig, ax = plt.subplots()
 sns.histplot(data=tips, x='total_bill')
-st.pyplot(fig)
+ax.set_xlabel('Доход')
+ax.set_ylabel('Количество в тыс. руб.')
+ax.set_title('размер дневной выручки ресторана')
+ax.grid(axis='y')
 
 st.write("""
+
 Визуализация суммы заказа и размер оставленных чаевых от каждого столика
+
 """)
 
-fig, ax = plt.subplots()
-sns.scatterplot(data=tips, x='total_bill', y='tip')
-st.pyplot(fig)
+fig, ax = plt.subplots(figsize=(10,8))
+sns.scatterplot(data=tips, x='total_bill', y='tip', size='size', sizes=list(np.arange(10,61,10)))
+ax.set_title('Визуализация суммы заказа и размер чаевых \
+             в зависимости от количества человек ')
+ax.set_xlabel('Доход')
+ax.set_ylabel('Количество в тыс. руб.')
+ax.legend(markerfirst=False, fontsize='x-small')
 
 st.write("""
 Общая сумма заказов по дням недели рабочего графика кафе
