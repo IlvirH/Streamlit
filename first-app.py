@@ -14,12 +14,12 @@ tickerData = yf.Ticker(tickerSymbol)
 tickerDf = tickerData.history(period='1d', start='2006-2-11', end='2022-9-22')
 
 st.write("""
-### Стоимость при закрытии торгов
+Стоимость акций 'APPL' при закрытии торгов
 """)
 
 st.line_chart(tickerDf['Close'])
 
 st.write("""
-### Объемы торгов
+Объемы торгов акций 'APPL'
 """)
 st.line_chart(tickerDf['Volume'])
